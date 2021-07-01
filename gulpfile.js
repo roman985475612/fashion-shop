@@ -102,7 +102,7 @@ task('icons', () => {
                 }
             }
         }))
-        .pipe(dest(`${DIST_PATH}/img/i`))
+        .pipe(dest(`${DIST_PATH}/i`))
 })
 
 task('server', () => {

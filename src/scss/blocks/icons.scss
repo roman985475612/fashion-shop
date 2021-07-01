@@ -1,0 +1,22 @@
+.icons {
+    display: flex;
+    align-items: center;
+
+    &__cart,
+    &__search {
+        margin: 0 12px;
+    }
+
+    &__cart {
+
+    }
+
+    &__search {
+        position: relative;
+    }
+
+    &__img {
+        display: block;
+        cursor: pointer;
+    }
+}
