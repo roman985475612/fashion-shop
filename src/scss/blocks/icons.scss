@@ -2,17 +2,13 @@
     display: flex;
     align-items: center;
 
-    &__cart,
-    &__search {
-        margin: 0 12px;
-    }
-
     &__cart {
-
+        margin: 0 12px;
     }
 
     &__search {
         position: relative;
+        margin-left: 12px;
     }
 
     &__img {

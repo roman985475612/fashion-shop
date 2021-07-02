@@ -22,7 +22,17 @@ const env = process.env.NODE_ENV
 sass.compiler = require('node-sass')
 
 task('clean', () => {
-    return src([`${DIST_PATH}/**/*`, `!${DIST_PATH}/images/**/*`], {read: false})
+    return src([
+            `${DIST_PATH}/**/*`, 
+            `!${DIST_PATH}/img/**/*`,
+            `!${DIST_PATH}/fonts/**/*`,
+            `!${DIST_PATH}/icons/**/*`
+        ], {read: false})
+        .pipe(rm())
+})
+
+task('clean:all', () => {
+    return src(`${DIST_PATH}/**/*`, {read: false})
         .pipe(rm())
 })
 
@@ -42,8 +52,13 @@ task('copy:icons', () => {
         .pipe(dest(`${DIST_PATH}/icons`))
 })
 
+task('copy:css', () => {
+    return src([...STYLES_LIBS])
+        .pipe(dest(`${DIST_PATH}/css`))
+})
+
 task('scss', () => {
-    return src([...STYLES_LIBS, `${SRC_PATH}/scss/style.scss`])
+    return src(`${SRC_PATH}/scss/style.scss`)
         .pipe(gulpIf(env === 'dev', sourcemaps.init()))
         .pipe(concat('style.min.scss'))
         .pipe(sassGlob())
@@ -59,8 +74,13 @@ task('scss', () => {
         .pipe(reload({stream: true}))
 })
 
+task('copy:js', () => {
+    return src([...JS_LIBS])
+        .pipe(dest(`${DIST_PATH}/js`))
+})
+
 task('js', () => {
-    return src([...JS_LIBS, `${SRC_PATH}/js/*.js`])
+    return src(`${SRC_PATH}/js/*.js`)
         .pipe(gulpIf(env === 'dev', sourcemaps.init()))
         .pipe(concat('main.min.js', {newLine: ';'}))
         .pipe(gulpIf(env === 'prod', babel({
@@ -120,17 +140,30 @@ task('watch', () => {
     watch(`./${SRC_PATH}/*.html`, series('copy:html'))
 })
 
+task('init', () => {
+    return src('*.*', {read: false})
+        .pipe(dest(`${DIST_PATH}`))
+        .pipe(dest(`${SRC_PATH}`))
+})
+
+task('static',
+    series(
+        'clean:all',
+        parallel('img', 'img:webp', 'copy:icons', 'copy:fonts')
+    )
+)
+
 task('default', 
     series(
         'clean', 
-        parallel('copy:html', 'scss', 'js', 'copy:fonts', 'copy:icons'), 
+        parallel('copy:html', 'copy:css', 'copy:js', 'scss', 'js'), 
         parallel('watch', 'server')
     )
 )
 
 task('build', 
     series(
-        'clean', 
+        'clean:all', 
         parallel('copy:html', 'scss', 'js', 'img', 'img:webp', 'copy:icons', 'copy:fonts')
     ) 
 )
