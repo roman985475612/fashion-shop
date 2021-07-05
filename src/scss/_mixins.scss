@@ -7,7 +7,7 @@
 }
 
 @mixin btn($bg: $black, $fz: 9px, $lh: 13px, $ls: .54px, $bdrs: 40px, $w: 115px, $c: $white) {
-    background: $black;
+    background: $bg;
     font-size: $fz;
     line-height: $lh;
     letter-spacing: $ls;

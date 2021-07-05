@@ -5,7 +5,6 @@ const sass = require('gulp-sass')
 const concat = require('gulp-concat')
 const browserSync = require('browser-sync').create()
 const reload = browserSync.reload
-const sassGlob = require('gulp-sass-glob')
 const autoprefixer = require('gulp-autoprefixer')
 const gcmq = require('gulp-group-css-media-queries')
 const cleanCss = require('gulp-clean-css')
@@ -61,7 +60,6 @@ task('scss', () => {
     return src(`${SRC_PATH}/scss/style.scss`)
         .pipe(gulpIf(env === 'dev', sourcemaps.init()))
         .pipe(concat('style.min.scss'))
-        .pipe(sassGlob())
         .pipe(sass().on('error', sass.logError))
         .pipe(gulpIf(env === 'prod', autoprefixer({
             browsers: ['last 2 versions'],

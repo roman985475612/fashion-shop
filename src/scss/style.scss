@@ -5,4 +5,12 @@
 @import 'variables';
 @import 'mixins';
 @import 'core';
-@import 'blocks/*.scss';
+
+@import 'blocks/top';
+@import 'blocks/menu';
+@import 'blocks/icons';
+@import 'blocks/slider';
+@import 'blocks/content';
+@import 'blocks/categories';
+@import 'blocks/offers';
+@import 'blocks/banner';

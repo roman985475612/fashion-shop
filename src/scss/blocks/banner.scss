@@ -1,0 +1,66 @@
+$bg-color: #00b7d9;
+
+.banner {
+    margin: 25px 0;
+    padding: 45px 0;
+    display: flex;
+    justify-content: flex-end;
+    background: url('../img/banner1.webp') left center no-repeat $bg-color;
+    background-size: cover;
+
+    &__info {
+        margin-right: 30px;
+        flex-basis: 630px;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 30px;
+        letter-spacing: 2.6px;
+        text-transform: uppercase;
+        color: $grey;
+    }
+
+    &__text {
+        margin: 20px 0;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 5.6px;
+        text-transform: uppercase;
+        color: $grey;
+    }
+
+    &__btn {
+        $values: (bg: $white, fz: 12px, lh: 20px, ls: 2.16px, w: 250px, c: $black, bdrs: 60px);
+        @include btn($values...) {
+            margin: 35px auto 0;
+            padding: 20px 0;
+        };
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .banner {
+        background-position: -150px 0;
+
+        &__info {
+            margin-right: 0;
+        }
+    }
+}
+
+@media (max-width: 880px) {
+
+    .banner {
+        background: $bg-color;
+
+        &__info {
+            flex-basis: 100%;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+    }
+}
