@@ -26,3 +26,17 @@
         background-color: lighten($bg, 15%);
     }
 }
+
+@mixin section() {
+    margin: 90px 0;
+}
+
+@mixin section-title() {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    text-align: center;
+    color: $grey;
+} 

@@ -1,0 +1,115 @@
+.featured {
+    @include section();
+
+    &__title {
+        @include section-title();
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__item {
+        flex-basis: 23%;
+    }
+
+    &__img {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto 20px;
+    }
+
+    &__link {
+        margin: 7px 0;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 17px;
+        text-decoration: none;
+        text-transform: capitalize;
+        color: $black;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__brand {
+        margin: 7px 0;
+        font-size: 16px;
+        line-height: 17px;
+        text-transform: capitalize;
+        color: $brand-color;
+    }
+
+    &__price {
+        margin: 7px 0;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 17px;
+
+        del {
+            margin-right: 10px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    &__btn {
+        $values: (fz: 12x, lh: 20px, ls: .6px, w: 175px, bdrs: 60px, bg: transparent, c: $black);
+        @include btn($values...) {
+            margin: 50px auto;
+            padding: 18px 0;
+            border: 2px solid #d9c8aa;
+        };
+    }
+
+    .owl-nav {
+    
+        button.owl-prev,
+        button.owl-next {
+            background: url('../img/sprite-arrow2.webp') 0 0 no-repeat;
+            width: 49px;
+            height: 49px;
+            border: none;
+            box-shadow: none;
+            position: absolute;
+            left: -55px;
+            top: calc(50% - 49px);
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+
+        button.owl-prev {
+
+            &:hover {
+                background-position: 0 -49px;
+            }
+        }
+
+        button.owl-next {
+            background-position: -49px 0;
+            left: auto;
+            right: -55px;
+
+            &:hover {
+                background-position: -49px -49px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+
+    .featured {
+        width: calc(100% - 100px);
+        margin: 90px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .featured {
+        margin: 25px auto;
+    }
+}

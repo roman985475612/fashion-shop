@@ -1,0 +1,63 @@
+.products {
+    @include section();
+
+    &__title {
+        @include section-title();
+    }
+
+    &__text {
+        margin: 20px 0;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 5.6px;
+        text-align: center;
+        color: $black;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 40px 0;
+    }
+
+    &__item {
+        flex-basis: 31.5%;
+        position: relative;
+    }
+
+    &__img {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    &__btn {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+        $values: (fz: 13px, lh: 20px, ls: .78px, w: 175px, bdrs: 60px);
+        @include btn($values...) {
+            padding: 20px 0;
+        };
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .products {
+        margin: 25px 0;
+    }
+}
+
+@media (max-width: 640px) {
+    
+    .products {
+
+        &__list {
+            flex-direction: column;
+            gap: 25px;
+        }
+    }
+}
