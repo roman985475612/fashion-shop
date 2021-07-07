@@ -1,5 +1,6 @@
 .blog {
     @include section();
+    margin-bottom: -140px;
 
     &__title {
         @include section-title();

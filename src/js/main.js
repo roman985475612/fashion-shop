@@ -1,5 +1,20 @@
 $(function() {
-    $('.slider .owl-carousel').owlCarousel({
+    // Search
+    $( '.search' ).on( 'click', function( event ) {
+        event.preventDefault()
+        event.stopPropagation()
+        $( this ).addClass( 'search--active' )
+    })
+
+    $( '.search__btn-img' ).on( 'click', function() {
+        $( '.search' ).submit()
+    })
+
+    $( 'body' ).on( 'click', function () {
+        $( '.search' ).removeClass( 'search--active' )
+    })
+
+    $( '.slider .owl-carousel' ).owlCarousel({
         loop: true,
         margin: 0,
         nav: true,
@@ -17,7 +32,7 @@ $(function() {
         }
     })
     
-    $('.featured .owl-carousel').owlCarousel({
+    $( '.featured .owl-carousel' ).owlCarousel({
         loop: true,
         margin: 30,
         nav: true,

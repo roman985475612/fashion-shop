@@ -1,0 +1,18 @@
+.footer {
+    padding: 10px 0;
+    background: $footer-bg;
+    text-align: center;
+
+    &__text {
+        margin: 20px 0;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 30px;
+        color: $grey;
+    }
+
+    &__logo {
+        display: block;
+        margin: 40px auto 30px;
+    }
+}
