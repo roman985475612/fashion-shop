@@ -1,2 +1,2 @@
-# Lost Shirt
-## Landing page on HTML, CSS and JavaScript
+# Fashion shop
+## Home page of the online store
